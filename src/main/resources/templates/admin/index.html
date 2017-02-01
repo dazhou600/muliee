@@ -11,28 +11,28 @@
 <meta name="renderer" content="webkit" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="icon" type="image/png"
-	href="../../static/assets/i/favicon.png" th:href="@{assets/i/favicon.png}" />
+	src="../../static/assets/i/favicon.png" th:src="@{/assets/i/favicon.png}" />
 <link rel="apple-touch-icon-precomposed"
-	href="../../static/assets/i/app-icon72x72@2x.png" th:href="@{/assets/i/app-icon72x72@2x.png}" />
+	src="../../static/assets/i/app-icon72x72@2x.png" th:src="@{/assets/i/app-icon72x72@2x.png}" />
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
 <script src="../../static/assets/js/echarts.min.js" th:src="@{/assets/js/echarts.min.js}"></script>
-<link rel="stylesheet" href="../../static/assets/css/amazeui.min.css" th:href="@{assets/css/amazeui.min.css}" />
+<link rel="stylesheet" href="../../static/assets/css/amazeui.min.css" th:href="@{/assets/css/amazeui.min.css}" />
 <link rel="stylesheet"
-	href="../../static/assets/css/amazeui.datatables.min.css" th:href="@{assets/css/amazeui.datatables.min.css}" />
-<link rel="stylesheet" href="../../static/assets/css/app.css" th:href="@{assets/css/app.css}" />
-<script src="../../static/assets/js/jquery.min.js" th:src="@{assets/js/jquery.min.js}"></script>
+	href="../../static/assets/css/amazeui.datatables.min.css" th:href="@{/assets/css/amazeui.datatables.min.css}" />
+<link rel="stylesheet" href="../../static/assets/css/app.css" th:href="@{/assets/css/app.css}" />
+<script src="../../static/assets/js/jquery.min.js" th:src="@{/assets/js/jquery.min.js}"></script>
 
 </head>
 
 <body data-type="index">
-	<script src="../../static/assets/js/theme.js" th:src="@{assets/js/theme.js}"></script>
+	<script src="../../static/assets/js/theme.js" th:src="@{/assets/js/theme.js}"></script>
 	<div class="am-g tpl-g">
 		<!-- 头部 -->
 		<header>
 			<!-- logo -->
 			<div class="am-fl tpl-header-logo">
 				<a href="javascript:;"><img
-					src="../../static/assets/img/logo.png" alt="" th:src="@{assets/img/logo.png}"/></a>
+					src="../../static/assets/img/logo.png" alt="" th:src="@{/assets/img/logo.png}"/></a>
 			</div>
 			<!-- 右侧内容 -->
 			<div class="tpl-header-fluid">
@@ -86,7 +86,7 @@
 									href="javascript:;"
 									class="tpl-dropdown-menu-messages-item am-cf">
 										<div class="menu-messages-ico">
-											<img src="../../static/assets/img/user02.png" th:src="@{assets/img/user02.png}" alt="" />
+											<img src="../../static/assets/img/user02.png" th:src="@{/assets/img/user02.png}" alt="" />
 										</div>
 										<div class="menu-messages-time">5天前</div>
 										<div class="menu-messages-content">
@@ -414,7 +414,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="duty : ${dutys}">
+											<tr class="gradeX" th:each="duty : ${dutys}">
 												<td th:text="${duty.u_id}">Onions</td>
 												<td th:text="${duty.u_name}">Onions</td>
 												<td th:text="${duty.mobile}">2.41</td>
@@ -446,10 +446,10 @@
 
 	</div>
 	
-	<script src="../../static/assets/js/amazeui.min.js" th:src="@{assets/js/amazeui.min.js}"></script>
-	<script src="../../static/assets/js/amazeui.datatables.min.js" th:src="@{assets/js/amazeui.datatables.min.js}"></script>
-	<script src="../../static/assets/js/dataTables.responsive.min.js" th:src="@{assets/js/dataTables.responsive.min.js}"></script>
-	<script src="../../static/assets/js/app.js" th:src="@{assets/js/app.js}"></script>
+	<script src="../../static/assets/js/amazeui.min.js" th:src="@{/assets/js/amazeui.min.js}"></script>
+	<script src="../../static/assets/js/amazeui.datatables.min.js" th:src="@{/assets/js/amazeui.datatables.min.js}"></script>
+	<script src="../../static/assets/js/dataTables.responsive.min.js" th:src="@{/assets/js/dataTables.responsive.min.js}"></script>
+	<script src="../../static/assets/js/app.js" th:src="@{/assets/js/app.js}"></script>
 
 </body>
 
