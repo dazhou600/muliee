@@ -13,9 +13,9 @@
 <link rel="icon" type="image/png"
 	href="../../static/assets/i/favicon.png" th:href="@{assets/i/favicon.png}" />
 <link rel="apple-touch-icon-precomposed"
-	href="../../static/assets/i/app-icon72x72@2x.png" th:href="@{assets/i/app-icon72x72@2x.png}" />
+	href="../../static/assets/i/app-icon72x72@2x.png" th:href="@{/assets/i/app-icon72x72@2x.png}" />
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-<script src="../../static/assets/js/echarts.min.js" th:src="@{assets/js/echarts.min.js}"></script>
+<script src="../../static/assets/js/echarts.min.js" th:src="@{/assets/js/echarts.min.js}"></script>
 <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css" th:href="@{assets/css/amazeui.min.css}" />
 <link rel="stylesheet"
 	href="../../static/assets/css/amazeui.datatables.min.css" th:href="@{assets/css/amazeui.datatables.min.css}" />
@@ -86,7 +86,7 @@
 									href="javascript:;"
 									class="tpl-dropdown-menu-messages-item am-cf">
 										<div class="menu-messages-ico">
-											<img src="../../static/assets/img/user02.png" alt="" />
+											<img src="../../static/assets/img/user02.png" th:src="@{assets/img/user02.png}" alt="" />
 										</div>
 										<div class="menu-messages-time">5天前</div>
 										<div class="menu-messages-content">
