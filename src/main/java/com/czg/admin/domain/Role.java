@@ -1,80 +1,156 @@
 package com.czg.admin.domain;
 
-import java.sql.*;
-import java.util.*;
+import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "role", catalog = "product")
 public class Role {
-
-	private String update_user;
+	private Integer rid;
+	private String rname;
 	private boolean isactive;
-	private String create_user;
-	private java.util.Date create_date;
-	private Integer r_id;
-	private Integer data_scope;
-	private String r_name;
-	private String r_type;
+	private Integer datascope;
+	private String rtype;
 	private String remarks;
-	private java.util.Date update_date;
+	private String createuser;
+	private Date createdate;
+	private String updateuser;
+	private Date updatedate;
+	private Set<Menu> menus;
 
-
-	public String getUpdate_user(){
-		return update_user;
+	public Role() {
+		super();
 	}
-	public boolean getIsactive(){
+
+	public Role(String rname, boolean isactive, Integer datascope, String rtype, String remarks, String createuser,
+			Date createdate, String updateuser, Date updatedate) {
+		super();
+		this.rname = rname;
+		this.isactive = isactive;
+		this.datascope = datascope;
+		this.rtype = rtype;
+		this.remarks = remarks;
+		this.createuser = createuser;
+		this.createdate = createdate;
+		this.updateuser = updateuser;
+		this.updatedate = updatedate;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "r_id", unique = true, nullable = false)
+	public Integer getRid() {
+		return rid;
+	}
+
+	@Column(name = "isactive", nullable = false)
+	public boolean getIsactive() {
 		return isactive;
 	}
-	public String getCreate_user(){
-		return create_user;
+
+	@Column(name = "r_name", nullable = false, length = 20)
+	public String getRname() {
+		return rname;
 	}
-	public java.util.Date getCreate_date(){
-		return create_date;
+
+	@Column(name = "data_scope", nullable = false)
+	public Integer getDatascope() {
+		return datascope;
 	}
-	public Integer getR_id(){
-		return r_id;
+
+	@Column(name = "r_type", length = 20)
+	public String getRtype() {
+		return rtype;
 	}
-	public Integer getData_scope(){
-		return data_scope;
-	}
-	public String getR_name(){
-		return r_name;
-	}
-	public String getR_type(){
-		return r_type;
-	}
-	public String getRemarks(){
+
+	@Column(name = "remarks")
+	public String getRemarks() {
 		return remarks;
 	}
-	public java.util.Date getUpdate_date(){
-		return update_date;
+
+	@Column(name = "update_date")
+	public Date getUpdatedate() {
+		return updatedate;
 	}
-	public void setUpdate_user(String update_user){
-		this.update_user=update_user;
+
+	@Column(name = "update_user", nullable = false)
+	public String getUpdateuser() {
+		return updateuser;
 	}
-	public void setIsactive(boolean isactive){
-		this.isactive=isactive;
+
+	@Column(name = "create_user", nullable = false)
+	public String getCreateuser() {
+		return createuser;
 	}
-	public void setCreate_user(String create_user){
-		this.create_user=create_user;
+
+	@Column(name = "create_date")
+	public Date getCreatedate() {
+		return createdate;
 	}
-	public void setCreate_date(java.util.Date create_date){
-		this.create_date=create_date;
+
+	@Transient
+	public Set<Menu> getMenus() {
+		return menus;
 	}
-	public void setR_id(Integer r_id){
-		this.r_id=r_id;
+
+	/*
+	 * 
+	 * 
+	 * set
+	 * 
+	 * 
+	 */
+	
+	public void setDutys(Set<Menu> menus) {
+		this.menus = menus;
 	}
-	public void setData_scope(Integer data_scope){
-		this.data_scope=data_scope;
+
+	public void setRid(Integer rid) {
+		this.rid = rid;
 	}
-	public void setR_name(String r_name){
-		this.r_name=r_name;
+
+	public void setIsactive(boolean isactive) {
+		this.isactive = isactive;
 	}
-	public void setR_type(String r_type){
-		this.r_type=r_type;
+
+	public void setRname(String rname) {
+		this.rname = rname;
 	}
-	public void setRemarks(String remarks){
-		this.remarks=remarks;
+
+	public void setDatascope(Integer datascope) {
+		this.datascope = datascope;
 	}
-	public void setUpdate_date(java.util.Date update_date){
-		this.update_date=update_date;
+
+	public void setRtype(String rtype) {
+		this.rtype = rtype;
 	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public void setUpdatedate(java.util.Date updatedate) {
+		this.updatedate = updatedate;
+	}
+
+	public void setUpdateuser(String updateuser) {
+		this.updateuser = updateuser;
+	}
+
+	public void setCreateuser(String createuser) {
+		this.createuser = createuser;
+	}
+
+	public void setCreatedate(java.util.Date createdate) {
+		this.createdate = createdate;
+	}
+
 }

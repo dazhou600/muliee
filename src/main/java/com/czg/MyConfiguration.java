@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class }) 
 public class MyConfiguration {
 	@Bean
-	public DataSource dataSource1() {
+	public DataSource dataSource() {
 		org.springframework.jdbc.datasource.DriverManagerDataSource ds = new org.springframework.jdbc.datasource.DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
 		ds.setUrl("jdbc:mysql://localhost:3306/product?characterEncoding=gbk&useSSL=false");
