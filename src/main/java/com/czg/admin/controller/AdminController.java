@@ -17,7 +17,7 @@ public class AdminController {
 	private AdminService adminService;
 	@RequestMapping("/admin")
 	public String admin(Model model) {
-		model.addAttribute("dutys",adminService.findAll());
+		//model.addAttribute("dutys",adminService.findAll());
 		return "admin/index";
 	}
 	

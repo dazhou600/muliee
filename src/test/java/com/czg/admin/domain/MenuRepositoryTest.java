@@ -19,8 +19,8 @@ public class MenuRepositoryTest {
 
 	@Test
 	public void test() {
-		List<Menu> menus = menurepo.findAll() ;
-		System.out.println(menus);
+		//List<Menu> menus = menurepo.findAll() ;
+		//System.out.println(menus);
 	}
 
 }

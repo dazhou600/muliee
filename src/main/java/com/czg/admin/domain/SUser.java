@@ -1,41 +1,78 @@
 package com.czg.admin.domain;
 
+import java.util.List;
+
 public class SUser {
- private String uname;
- 
- private String mname;
 
- private String permission;
+	private int uid;
 
-public String getUname() {
-	return uname;
-}
+	private String uname;
 
-public void setUname(String uname) {
-	this.uname = uname;
-}
+	private String rname;
 
-public String getMname() {
-	return mname;
-}
+	private String permission;
 
-public void setMname(String mname) {
-	this.mname = mname;
-}
+	private int isactive;
 
-public String getPermission() {
-	return permission;
-}
+	private List<String> rnames;
 
-public void setPermission(String permission) {
-	this.permission = permission;
-}
+	private List<Menu> permissions;
 
-@Override
-public String toString() {
-	return "SUser [uname=" + uname + ", mname=" + mname + ", permission=" + permission + "]";
-}
-  
- 
+	public SUser() {
+		super();
+	}
+
+	public SUser(int uid, String uname, String rname, String permission, int isactive) {
+		super();
+		this.uid = uid;
+		this.uname = uname;
+		this.rname = rname;
+		this.permission = permission;
+		this.isactive = isactive;
+	}
+
+	public String getRname() {
+		return rname;
+	}
+
+	public String getPermission() {
+		return permission;
+	}
+
+	public int getIsactive() {
+		return isactive;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
+	public List<String> getRnames() {
+		return rnames;
+	}
+
+	public void setRnames(List<String> rnames) {
+		this.rnames = rnames;
+	}
+
+	public List<Menu> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<Menu> permissions) {
+		this.permissions = permissions;
+	}
 
 }

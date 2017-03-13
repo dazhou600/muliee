@@ -3,16 +3,6 @@ package com.czg.admin.domain;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
-@Entity
-@Table(name = "role", catalog = "product")
 public class Role {
 	private Integer rid;
 	private String rname;
@@ -30,6 +20,16 @@ public class Role {
 		super();
 	}
 
+
+
+	public Role(Integer rid, String rname) {
+		super();
+		this.rid = rid;
+		this.rname = rname;
+	}
+
+
+
 	public Role(String rname, boolean isactive, Integer datascope, String rtype, String remarks, String createuser,
 			Date createdate, String updateuser, Date updatedate) {
 		super();
@@ -44,59 +44,47 @@ public class Role {
 		this.updatedate = updatedate;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "r_id", unique = true, nullable = false)
+
 	public Integer getRid() {
 		return rid;
 	}
 
-	@Column(name = "isactive", nullable = false)
 	public boolean getIsactive() {
 		return isactive;
 	}
 
-	@Column(name = "r_name", nullable = false, length = 20)
 	public String getRname() {
 		return rname;
 	}
 
-	@Column(name = "data_scope", nullable = false)
 	public Integer getDatascope() {
 		return datascope;
 	}
 
-	@Column(name = "r_type", length = 20)
 	public String getRtype() {
 		return rtype;
 	}
 
-	@Column(name = "remarks")
 	public String getRemarks() {
 		return remarks;
 	}
 
-	@Column(name = "update_date")
 	public Date getUpdatedate() {
 		return updatedate;
 	}
 
-	@Column(name = "update_user", nullable = false)
 	public String getUpdateuser() {
 		return updateuser;
 	}
 
-	@Column(name = "create_user", nullable = false)
 	public String getCreateuser() {
 		return createuser;
 	}
 
-	@Column(name = "create_date")
 	public Date getCreatedate() {
 		return createdate;
 	}
 
-	@Transient
 	public Set<Menu> getMenus() {
 		return menus;
 	}
@@ -109,7 +97,7 @@ public class Role {
 	 * 
 	 */
 	
-	public void setDutys(Set<Menu> menus) {
+	public void setMenu(Set<Menu> menus) {
 		this.menus = menus;
 	}
 

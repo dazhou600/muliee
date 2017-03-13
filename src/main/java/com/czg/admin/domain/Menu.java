@@ -8,12 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-@Entity
-@Table(name = "menu", catalog = "product")
 public class Menu {
 
 	private Integer menuid;
-	private boolean isactive;
+	private int isactive;
 	private String icon;
 	private String permission;
 	private Integer sort;
@@ -26,71 +24,66 @@ public class Menu {
 	private String updateby;
 	private String remarks;
 
+	public Menu(int isactive, String permission) {
+		super();
+		this.isactive = isactive;
+		this.permission = permission;
+	}
 	
-	@Id
-	@Column(name = "menu_id", unique = true, nullable = false)
+	public Menu() {
+		super();
+	}
+
 	public Integer getMenuid() {
 		return menuid;
 	}
 
-	@Column(name = "isactive")
-	public boolean getIsactive() {
+	public int getIsactive() {
 		return isactive;
 	}
 
-	@Column(name = "icon", length = 20)
 	public String getIcon() {
 		return icon;
 	}
 
-	@Column(name = "Permission", nullable=false,length = 20)
 	public String getPermission() {
 		return permission;
 	}
 
-	@Column(name = "sort")
 	public Integer getSort() {
 		return sort;
 	}
 
 	
-	@Column(name = "is_show")
 	public boolean getIsshow() {
 		return isshow;
 	}
 
 	
-	@Column(name = "update_date")
 	public Date getUpdatedate() {
 		return updatedate;
 	}
 
-	@Column(name = "Create_by", length = 20)
 	public String getCreateby() {
 		return createby;
 	}
 
-	@Column(name = "name", length = 20)
 	public String getName() {
 		return name;
 	}
 
-	@Column(name = "href", length = 100)
 	public String getHref() {
 		return href;
 	}
 
-	@Column(name = "create_date")
 	public Date getCreatedate() {
 		return createdate;
 	}
 
-	@Column(name = "update_by", length = 50)
 	public String getUpdateby() {
 		return updateby;
 	}
 
-	@Column(name = "remarks", length = 256)
 	public String getRemarks() {
 		return remarks;
 	}
@@ -104,7 +97,7 @@ public class Menu {
 		this.menuid = menuid;
 	}
 
-	public void setIsactive(boolean isactive) {
+	public void setIsactive(int isactive) {
 		this.isactive = isactive;
 	}
 

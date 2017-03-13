@@ -29,7 +29,7 @@ public class RoleRepositoryTests {
 //		rolerepo.save(r);
 //		//创建并删除角色
 //		rolerepo.delete(rolerepo.findByRname("超管"));
-		rolerepo.findMenus();
+	System.out.println(rolerepo.findRoleMenus(1));
 	}
 
 }
