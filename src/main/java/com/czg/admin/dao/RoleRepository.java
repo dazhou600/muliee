@@ -30,11 +30,8 @@ public class RoleRepository {
 	public List<Role> findRoleMenus(Integer id){ 
 		String sql = "SELECT role.r_id,role.r_name,menu.menu_id , menu.name FROM role_menu , menu, role "
 				+ "where role.r_id=? and role.r_id=role_menu.role_id and role_menu.menu_id=menu.menu_id";
-
-				
-				List<Role> roles= null ;
 		
-		return roles=jdbcTemplate.query(sql, new RoleRowMapper(), id);
+		return jdbcTemplate.query(sql, new RoleRowMapper(), id);
 	}
 
 

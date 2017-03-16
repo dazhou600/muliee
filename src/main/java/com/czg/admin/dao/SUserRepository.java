@@ -1,5 +1,6 @@
 package com.czg.admin.dao;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,9 +19,12 @@ import com.czg.admin.domain.Menu;
 import com.czg.admin.domain.SUser;
 
 @Repository
-public class SUserRepository {
+public class SUserRepository implements Serializable {
+
+	private static final long serialVersionUID = -6465791054328030992L;
 
 	private JdbcTemplate jdbcTemplate;
+
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -49,8 +53,9 @@ public class SUserRepository {
 			}
 			// 权限添加 并且不重复
 			if (StringUtils.hasText(dbuser.getPermission())) {
-				//System.out.println("*******************"+suser.getPermissions());
-				if (suser.getPermissions().isEmpty() || (!isContain(suser.getPermissions(),dbuser.getPermission(),dbuser.getIsactive()))) {
+				// System.out.println("*******************"+suser.getPermissions());
+				if (suser.getPermissions().isEmpty()
+						|| (!isContain(suser.getPermissions(), dbuser.getPermission(), dbuser.getIsactive()))) {
 					Menu menu = new Menu(dbuser.getIsactive(), dbuser.getPermission());
 					suser.getPermissions().add(menu);
 				}
@@ -58,16 +63,16 @@ public class SUserRepository {
 		}
 		return suser;
 	}
-	
-	private boolean isContain(List<Menu> menus,String permission,int isactive){
-		for(Menu menu:menus){
-			if(menu.getPermission().equals(permission)){
-				if(menu.getIsactive()>=isactive){
-					return true ;
-				}else {
+
+	private boolean isContain(List<Menu> menus, String permission, int isactive) {
+		for (Menu menu : menus) {
+			if (menu.getPermission().equals(permission)) {
+				if (menu.getIsactive() >= isactive) {
+					return true;
+				} else {
 					menu.setIsactive(isactive);
-					//System.out.println("****menu.setIsactive(isactive):"+isactive+"**************");
-					return true ;
+					// System.out.println("****menu.setIsactive(isactive):"+isactive+"**************");
+					return true;
 				}
 			}
 		}
@@ -78,9 +83,9 @@ public class SUserRepository {
 		String sql = "SELECT distinct u.u_id uid, u.u_name uname,r.r_name rname,m.isactive isactive, m.permission permission "
 				+ "FROM duty u, menu m, role r, role_menu rm, user_role ur "
 				+ "where u.u_id=? and u.u_id=ur.user_id and ur.role_id=r.r_id and r.r_id=rm.role_id and rm.menu_id=m.menu_id";
-		List<SUser> susers = null;
+		// List<SUser> susers = null;
 
-		return susers = jdbcTemplate.query(sql, new SUserRoleRowMapper(), id);
+		return jdbcTemplate.query(sql, new SUserRoleRowMapper(), id);
 	}
 
 	private final class SUserRoleRowMapper implements RowMapper<SUser> {

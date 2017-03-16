@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.JoinColumn;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,8 +19,6 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
-@Table(name = "duty", catalog = "product")
 public class Duty {
 
 	private String id;
@@ -37,77 +36,102 @@ public class Duty {
 	private String email;
 	private Set<Role> rols;
 
-	@Id
-	@Column(name = "u_id", unique = true, nullable = false)
+	
+	
+	public Duty(String id, String name, boolean isactive, String mobile, String photo, Date logindate, String remark,
+			String loginip, String password, Date expiredate, Date lastupdate, Date createdate, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.isactive = isactive;
+		this.mobile = mobile;
+		this.photo = photo;
+		this.logindate = logindate;
+		this.remark = remark;
+		this.loginip = loginip;
+		this.password = password;
+		this.expiredate = expiredate;
+		this.lastupdate = lastupdate;
+		this.createdate = createdate;
+		this.email = email;
+	}
+
+	public Duty(String id, String name, boolean isactive, String mobile, String photo, Date logindate, String remark,
+			String loginip, String password, Date expiredate, Date lastupdate, Date createdate, String email,
+			Set<Role> rols) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.isactive = isactive;
+		this.mobile = mobile;
+		this.photo = photo;
+		this.logindate = logindate;
+		this.remark = remark;
+		this.loginip = loginip;
+		this.password = password;
+		this.expiredate = expiredate;
+		this.lastupdate = lastupdate;
+		this.createdate = createdate;
+		this.email = email;
+		this.rols = rols;
+	}
+
 	public String getId() {
 		return id;
 	}
 
-	@Column(name = "u_name", length = 20)
 	public String getName() {
 		return name;
 	}
 
-	@Column(name = "isactive")
 	public boolean getIsactive() {
 		return isactive;
 	}
 
-	@Column(name = "mobile", length = 20)
 	public String getMobile() {
 		return mobile;
 	}
 
-	@Column(name = "photo", length = 20)
 	public String getPhoto() {
 		return photo;
 	}
 
-	@Column(name = "login_date")
 	public java.util.Date getLogindate() {
 		return logindate;
 	}
 
 	@Length(min = 5, max = 200, message = "备注长度必须介于 1 和 200 之间")
-	@Column(name = "remark", length = 100)
 	public String getRemark() {
 		return remark;
 	}
 
-	@Column(name = "login_ip", length = 120)
 	public String getLoginip() {
 		return loginip;
 	}
 
-	@Column(name = "password", length = 64)
 	@Length(min = 6, max = 200, message = "密码长度必须介于 6 和 16 之间")
 	public String getPassword() {
 		return password;
 	}
 
-	@Column(name = "expire_date")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	public java.util.Date getExpiredate() {
 		return expiredate;
 	}
 
-	@Column(name = "last_update")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	public java.util.Date getLastupdate() {
 		return lastupdate;
 	}
 
-	@Column(name = "create_date")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	public java.util.Date getCreatedate() {
 		return createdate;
 	}
 
-	@Column(name = "email", length = 60)
 	public String getEmail() {
 		return email;
 	}
-	@Transient
 	public Set<Role> getRols() {
 		return rols;
 	}

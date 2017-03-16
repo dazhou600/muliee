@@ -1,8 +1,11 @@
 package com.czg.admin.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SUser {
+public class SUser implements Serializable {
+
+	private static final long serialVersionUID = -6718128562929252469L;
 
 	private int uid;
 
