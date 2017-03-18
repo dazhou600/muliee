@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
@@ -27,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception { // 允许所有用户访问”/”和”/home”
 
-		http.authorizeRequests().antMatchers("/assets/**/**", "/assets/**/**/**", "/admin").permitAll() // 其他地址的访问均需验证权限
+		http.authorizeRequests().antMatchers("/fonts/**", "/admin").permitAll() // 其他地址的访问均需验证权限
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
 				// 登录成功后可使用loginSuccessHandler()存储用户信息，可选。
 				// .successHandler(loginSuccessHandler())//code3

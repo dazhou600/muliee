@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
@@ -11,10 +12,12 @@
 
 <title>Dashboard Template for Bootstrap</title>
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"></link>
+<link href="css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}"></link>
 
 <!-- Custom styles for this template -->
-<link href="css/dashboard.css" rel="stylesheet" th:href="@{/css/dashboard.css}"></link>
+<link href="css/dashboard.css" rel="stylesheet"
+	th:href="@{/css/dashboard.css}"></link>
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -102,51 +105,25 @@
 				</ul>
 
 			</div>
-			<div id="content"
+			<div id="content" layout:fragment="content"
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">内容</h1>
-
-
-				<h2 class="sub-header">子 表头 title</h2>
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>用户ID</th>
-								<th>姓名</th>
-								<th>电话</th>
-								<th>登录时间</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="gradeX" th:each="duty : ${dutys}">
-								<td th:text="${duty.id}">Onions</td>
-								<td th:text="${duty.name}">Onions</td>
-								<td th:text="${duty.mobile}">2.41</td>
-								<td th:text="${duty.logindate}">yes</td>
-								<td>
-									<div class="tpl-table-black-operation">
-										<a href="javascript:;"> <i class="am-icon-pencil"></i> 编辑
-										</a> <a href="javascript:;" class="tpl-table-black-operation-del">
-											<i class="am-icon-trash"></i> 删除
-										</a>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			</div>
+			<div>
+				<p class="text-center bg-success">Copyright © 2014-2016
+					dazhou600</p>
 			</div>
 		</div>
 	</div>
 	<script src="../js/jquery.min.js" th:src="@{../js/jquery.min.js}"></script>
 	<script src="../js/bootstrap.min.js" th:src="@{../js/bootstrap.min.js}"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-	<script src="../assets/js/vendor/holder.min.js" th:src="@{../assets/js/vendor/holder.min.js}"></script>
+	<script src="../assets/js/vendor/holder.min.js"
+		th:src="@{../assets/js/vendor/holder.min.js}"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../assets/js/ie10-viewport-bug-workaround.js" th:src="@{../assets/js/ie10-viewport-bug-workaround.js}"></script>
-	<script src="../js/ie-emulation-modes-warning.js" th:src="@{../js/ie-emulation-modes-warning.js}"></script>
+	<script src="../assets/js/ie10-viewport-bug-workaround.js"
+		th:src="@{../assets/js/ie10-viewport-bug-workaround.js}"></script>
+	<script src="../js/ie-emulation-modes-warning.js"
+		th:src="@{../js/ie-emulation-modes-warning.js}"></script>
 	<script type="text/javascript">
 		$(function() {
 			$("#menu-updown>ul>li>ul").hide();
@@ -200,11 +177,5 @@
 
 		});
 	</script>
-	<footer>
-		<div>
-			<p class="text-center bg-success">Copyright © 2014-2016 dazhou600
-			</p>
-		</div>
-	</footer>
 </body>
 </html>
