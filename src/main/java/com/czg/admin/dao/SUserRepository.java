@@ -53,7 +53,6 @@ public class SUserRepository implements Serializable {
 			}
 			// 权限添加 并且不重复
 			if (StringUtils.hasText(dbuser.getPermission())) {
-				// System.out.println("*******************"+suser.getPermissions());
 				if (suser.getPermissions().isEmpty()
 						|| (!isContain(suser.getPermissions(), dbuser.getPermission(), dbuser.getIsactive()))) {
 					Menu menu = new Menu(dbuser.getIsactive(), dbuser.getPermission());
@@ -71,7 +70,6 @@ public class SUserRepository implements Serializable {
 					return true;
 				} else {
 					menu.setIsactive(isactive);
-					// System.out.println("****menu.setIsactive(isactive):"+isactive+"**************");
 					return true;
 				}
 			}
@@ -83,8 +81,6 @@ public class SUserRepository implements Serializable {
 		String sql = "SELECT distinct u.u_id uid, u.u_name uname,r.r_name rname,m.isactive isactive, m.permission permission "
 				+ "FROM duty u, menu m, role r, role_menu rm, user_role ur "
 				+ "where u.u_id=? and u.u_id=ur.user_id and ur.role_id=r.r_id and r.r_id=rm.role_id and rm.menu_id=m.menu_id";
-		// List<SUser> susers = null;
-
 		return jdbcTemplate.query(sql, new SUserRoleRowMapper(), id);
 	}
 

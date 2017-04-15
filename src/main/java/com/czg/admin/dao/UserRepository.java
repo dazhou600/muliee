@@ -24,6 +24,11 @@ public class UserRepository {
 		
 	}
 	
+	public Duty findByNamePswd(){
+		String sql="SELECT u_id , u_name FROM product.duty where u_name='姓名3' and password = '密码3' ";
+		return null;
+	}
+	
 	public List<Duty> findAll(){
 		String sql="SELECT u_id id,u_name name,password,isactive,photo,email,mobile,"
 				+ "remark,login_ip,login_date,expire_date,create_date,last_update "
