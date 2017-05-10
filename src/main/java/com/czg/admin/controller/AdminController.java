@@ -27,7 +27,7 @@ public class AdminController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
+	@RequestMapping(value="/signin",method=RequestMethod.GET)
 	public String login() {
 		System.out.println("*****************************");
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception { // 允许所有用户访问”/”和”/home”
 
 		http.authorizeRequests()
-        .antMatchers("/imgs/*.jpg","/fonts/**","/login_reg.html").permitAll()
+        .antMatchers("/imgs/*.jpg","/fonts/**","/login_reg.html","/yzm.png*","/signin").permitAll()
         //其他地址的访问均需验证权限
         .anyRequest().authenticated()
         .and()
@@ -67,12 +69,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.usersByUsernameQuery("SELECT u_name , password , isactive FROM product.duty where u_name=? ")
 		.authoritiesByUsernameQuery("SELECT distinct u.u_name uname, m.permission permission FROM duty u, menu m, role r, role_menu rm, user_role ur where u.u_name=? and u.u_id=ur.user_id and ur.role_id=r.r_id and r.r_id=rm.role_id and rm.menu_id=m.menu_id")
 		.passwordEncoder(new StandardPasswordEncoder("wztq"));
+		//.and().authenticationProvider(getAuthenticationProvider());
 	
 		// 指定密码加密所使用的加密器为passwordEncoder() //需要将密码加密后写入数据库 //code13
 		// auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());//
 		// code5
 		// //不删除凭据，以便记住用户
 		// auth.eraseCredentials(false);
+	}
+	private AuthenticationProvider getAuthenticationProvider(){
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		provider.setHideUserNotFoundExceptions(false);
+		return provider;
+		
 	}
 
 	public BCryptPasswordEncoder passwordEncoder() {
