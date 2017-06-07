@@ -15,7 +15,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+
+import com.czg.filter.CaptcatFilter;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -30,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception { // 允许所有用户访问”/”和”/home”
 
 		http.authorizeRequests()
-        .antMatchers("/imgs/*.jpg","/fonts/**","/login_reg.html","/yzm.png*","/signin").permitAll()
+        .antMatchers("/imgs/*.jpg","/fonts/**","/login_reg.html","/yzm.png*","/login").permitAll()
         //其他地址的访问均需验证权限
         .anyRequest().authenticated()
         .and()
@@ -38,8 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //指定登录页是"/login"
         .loginPage("/login")
         .defaultSuccessUrl("/admin")//登录成功后默认跳转到
-        .permitAll()
-        .and()
+        .permitAll().failureUrl("/login?error")
+        .and().addFilterBefore(new CaptcatFilter("/login","/login?error"), UsernamePasswordAuthenticationFilter.class)
         .logout()
         .logoutSuccessUrl("/home")//退出登录后的默认url是"/home"
         .permitAll();

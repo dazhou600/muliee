@@ -1,9 +1,9 @@
 package com.czg.filter;
 
-import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.core.AuthenticationException;
 
 
-public class CaptcatException extends AuthenticationServiceException{
+public class CaptcatException extends AuthenticationException{
 
 	/**
 	 * 
