@@ -68,7 +68,6 @@ public class AuthCode {
 		// d.向图形中写数据
 		String str = setWriteDate1(g);
 		request.getSession().setAttribute("yzm", str);
-		System.out.println(str + "***********");
 		System.out.println(request.getSession().getAttribute("yzm") + "****重新获得yzm*******");
 		// 4.把图片写给浏览器
 		response.setContentType("image/jpeg");
